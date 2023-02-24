@@ -1,8 +1,10 @@
 import * as React from 'react';
+import Pallette from './Pallette';
 import './style.css';
 
 export default function App() {
-  const colors = {
+  const lightModeBackround = '#f5f5f5';
+  const lightModeForeground = {
     black: '#3b404a',
     neutralDark: '#4f5561',
     neutralPrimary: '#282c34',
@@ -10,13 +12,28 @@ export default function App() {
     neutralSecondary: '#9398a4',
     neutralTertiary: '#abb0ba',
   };
+
+  const darkModeBackground = '#282c34';
+  const darkModeForeground = {
+    black: '#1d1d1d',
+    neutralDark: '#373737',
+    neutralPrimary: '#f1f1f1',
+    neutralPrimaryAlt: '#6c6c6c',
+    neutralSecondary: '#878787',
+    neutralTertiary: '#a1a1a1',
+  };
   return (
     <div className="app-container">
-      <div className="pallette">
-        {Object.values(colors).map((c) => (
-          <div className="pallette-color" style={{ background: c }}></div>
-        ))}
-      </div>
+      <Pallette
+        colors={lightModeForeground}
+        background={lightModeBackround}
+        colorScheme="light"
+      />
+      <Pallette
+        colors={darkModeForeground}
+        background={darkModeBackground}
+        colorScheme="dark"
+      />
     </div>
   );
 }
