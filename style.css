@@ -1,0 +1,31 @@
+body {
+  background: #15181e;
+  color: white;
+  height: 100vh;
+  font-family: 'Fira Code';
+  margin: 0;
+}
+
+.pallette {
+  color: aliceblue;
+  display: flex;
+  flex: 1;
+}
+
+.pallette-color {
+  height: 400px;
+  flex: 1;
+  background: grey;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#root {
+  height: 100vh;
+}
