@@ -1,31 +1,60 @@
 import * as React from 'react';
 
+export interface IForegroundPallette {
+  type: 'fg';
+  black: string;
+  neutralDark: string;
+  neutralPrimary: string;
+  neutralPrimaryAlt: string;
+  neutralSecondary: string;
+  neutralTertiary: string;
+}
+
+export interface IBackroundPallette {
+  type: 'bg';
+  white: string;
+  neutralLight: string;
+  neutralLighter: string;
+  neutralLighterAlt: string;
+  neutralQuaternary: string;
+  neutralQuaternaryAlt: string;
+  neutralTertiaryAlt: string;
+}
+
+type IPallette = IForegroundPallette | IBackroundPallette;
+
 interface IProps {
-  colors: {
-    black: '#1d1d1d';
-    neutralDark: '#373737';
-    neutralPrimary: '#f1f1f1';
-    neutralPrimaryAlt: '#6c6c6c';
-    neutralSecondary: '#878787';
-    neutralTertiary: '#a1a1a1';
-  } & Record<string, string>;
+  name: string;
+  colors: IPallette;
   background?: string;
 }
 
-export default function Pallette({ colors, background }: IProps) {
+export default function Pallette({ name, colors, background }: IProps) {
   return (
-    <div className="pallette" style={{ background }}>
-      {Object.keys(colors).map((k) => (
-        <div className="pallette-item" key={k}>
-          <div className="pallette-color" style={{ background: colors[k] }} />
-          <div
-            className="pallette-name"
-            style={{ color: background && colors.neutralPrimary }}
-          >
-            {k}
-          </div>
-        </div>
-      ))}
+    <div className="pallette-wrapper">
+      <div className="pallette-name">{name}</div>
+      <div className="pallette" style={{ background }}>
+        {Object.keys(colors)
+          .filter((k) => k !== 'type')
+          .map((k) => (
+            <div className="pallette-item" key={k}>
+              <div
+                className="pallette-color"
+                style={{ background: colors[k] }}
+              />
+              <div
+                className="pallette-name"
+                style={{
+                  color:
+                    (background && colors[k]) ||
+                    (colors.type === 'bg' ? colors.white : colors.black),
+                }}
+              >
+                {k}
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

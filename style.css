@@ -1,17 +1,29 @@
 body {
   background: #15181e;
   color: white;
-  height: 100vh;
+  height: 1w00vh;
   font-family: 'Fira Code';
   margin: 0;
 }
 
 .pallette {
+  margin-top: 5px;
   color: aliceblue;
   display: flex;
-  margin: 40px;
   padding: 20px;
   border-radius: 20px;
+  flex-wrap: wrap;
+}
+
+.pallette-wrapper {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pallette-name {
+  align-self: flex-start;
+  margin-left: 20px;
 }
 
 .pallette-color {
@@ -28,7 +40,7 @@ body {
 
 .pallette-item {
   height: 400px;
-  flex: auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -44,5 +56,5 @@ body {
 }
 
 #root {
-  height: 100vh;
+  /* height: 100vh; */
 }
